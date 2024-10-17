@@ -10,5 +10,5 @@ import java.util.Map;
  *
  * @author JyL
  */
-public record Divisa(Map<String, Double> conversion_rates) {
+public record DivisaOmdb(Map<String, Double> conversion_rates) {
 }
