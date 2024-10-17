@@ -69,12 +69,11 @@ public class ConversorPrincipal {
     public static void imprimirDivisas(List<String> divisas) {
         System.out.println("Las divisas disponibles son: ");
         for (int i = 0; i < divisas.size(); i++) {
-            System.out.print("|" + divisas.get(i) + "|");
-            if (i % 10 == 0 && i != 0) {
+            if (i % 18 == 0 && i != 0) {
                 System.out.println();
             }
+            System.out.print("|" + divisas.get(i) + "|");            
         }
-        System.out.print("|");
     }
 
     // Método para realizar la conversión de divisas
