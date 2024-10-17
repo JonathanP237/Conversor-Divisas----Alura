@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  *
- * @author JyL
+ * @author Jonathan Puentes
  */
 public class ConversorPrincipal {
 
