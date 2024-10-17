@@ -68,8 +68,11 @@ public class ConversorPrincipal {
     // Método para imprimir las divisas disponibles
     public static void imprimirDivisas(List<String> divisas) {
         System.out.println("Las divisas disponibles son: ");
-        for (String div : divisas) {
-            System.out.print("|" + div);
+        for (int i = 0; i < divisas.size(); i++) {
+            System.out.print("|" + divisas.get(i) + "|");
+            if (i % 10 == 0 && i != 0) {
+                System.out.println();
+            }
         }
         System.out.print("|");
     }
