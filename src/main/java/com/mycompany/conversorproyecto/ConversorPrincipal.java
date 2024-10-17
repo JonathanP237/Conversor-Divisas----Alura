@@ -60,9 +60,11 @@ public class ConversorPrincipal {
     // Método para imprimir el historico de conversiones
     public static void imprimirHistorico(List<String> historico) {
         System.out.println("Historico de conversiones: ");
-        for (String conversion : historico) {
+        System.out.println("\n-------------------------------------------------");
+        for (String conversion : historico) {            
             System.out.println(conversion);
         }
+        System.out.println("\n-------------------------------------------------");
     }
 
     // Método para imprimir las divisas disponibles
