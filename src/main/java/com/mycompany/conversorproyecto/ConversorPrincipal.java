@@ -7,6 +7,7 @@ package com.mycompany.conversorproyecto;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  *
@@ -23,6 +24,7 @@ public class ConversorPrincipal {
         // Se crea una lista para almacenar el historico de conversiones no es
         // persistente
         List<String> historico = new ArrayList<>();
+        Scanner entrada = new Scanner(System.in);
         System.out.println("Bienvenido al conversor de divisas");
         // Se crea un ciclo para que se realicen varias conversiones
         while (true) {
@@ -30,14 +32,14 @@ public class ConversorPrincipal {
             System.out.println("1. Conversión de divisas");
             System.out.println("2. Consultar histórico de conversiones");
             System.out.println("3. Salir");
-            String opcion = System.console().readLine();
+            String opcion = entrada.nextLine();
             // Se crea un switch para realizar la operación seleccionada
             switch (opcion) {
                 case "1":
                     // Se imprimen las divisas disponibles
                     imprimirDivisas(divisas);
                     // Se realiza la conversión de divisas
-                    realizarConversion(gestor, divisa, historico);
+                    realizarConversion(gestor, divisa, historico, entrada);
                     break;
                 case "2":
                     // Se imprime el historico de conversiones
@@ -73,20 +75,20 @@ public class ConversorPrincipal {
     }
 
     // Método para realizar la conversión de divisas
-    public static void realizarConversion(GestorBusqueda gestor, DivisaOmdb divisa, List<String> historico)
+    public static void realizarConversion(GestorBusqueda gestor, DivisaOmdb divisa, List<String> historico, Scanner entrada)
             throws IOException, InterruptedException {
         System.out.println("\nIntroduce la divisa de origen: ");
-        String divisaOrigen = System.console().readLine();
+        String divisaOrigen = entrada.nextLine();
         // Se realiza una búsqueda de la divisa de origen
-        divisa = gestor.realizarBusqueda(divisaOrigen.toUpperCase());
+        divisa = gestor.realizarBusqueda(divisaOrigen.toUpperCase());        
         // Se verifica si la divisa de origen es válida y se realiza la conversión
         if (divisa.conversion_rates() != null) {
             try {
                 System.out.println("Introduce la divisa de destino: ");
-                String divisaDestino = System.console().readLine();
+                String divisaDestino = entrada.nextLine();
                 double tasa = divisa.conversion_rates().get(divisaDestino.toUpperCase());
                 System.out.println("Introduce la cantidad a convertir: ");
-                double cantidad = Double.parseDouble(System.console().readLine());
+                double cantidad = Double.parseDouble(entrada.nextLine());
                 double resultado = cantidad * tasa;
                 System.out.println("El resultado de la conversión es: " + resultado);
                 historico.add(divisaOrigen + " a " + divisaDestino + ": " + cantidad + " = " + resultado);
